@@ -22,11 +22,36 @@
  * DEALINGS IN THE SOFTWARE.
  */
 Storyboard = function (config) {
-    this.config = config || {};
-    this.root = $('.storyboard:first');
+  this.config = config || {
+    "default": {
+    }
+  };
 
-    // TODO: Bind to space
+  var storyboard = $(".storyboard:first");
+  var sb_active = storyboard.children(".sb:first");
+  var sb = storyboard.children(".sb:not(:first)");
 
-    return {
-    };
+  sb.css("opacity", 0.1);
+  sb_active.addClass("sb-active");
+
+  function next() {
+    var sb_next = sb_active.next(".sb");
+
+    if (sb_next.length) {
+      sb_active.animate({"opacity": 0.1});
+      sb_active.removeClass("sb-active");
+
+      sb_active = sb_next;
+
+      sb_active.animate({"opacity": 1.0});
+      sb_active.addClass("sb-active");
+    }
+  }
+
+  // Switch scene
+  $(window).keypress(function(e) {
+    if (e.keyCode == 0 || e.keyCode == 32) {
+      next();
+    }
+  });
 }();
