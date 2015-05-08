@@ -1,0 +1,21 @@
+{
+  "name": "storyboard-js",
+  "version": "0.0.0",
+  "authors": [
+    "Christian Uhsat <christian@uhsat.de>"
+  ],
+  "description": "Storyboard.js",
+  "main": "src/storyboard.js",
+  "keywords": [
+    "Storyboard.js"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/cuhsat/storyboard",
+  "ignore": [
+    "**/.*",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "~2.1",
+  }
+}
