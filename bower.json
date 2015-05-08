@@ -10,7 +10,7 @@
     "Storyboard.js"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/cuhsat/storyboard",
+  "homepage": "https://github.com/cuhsat/storyboard.js",
   "ignore": [
     "**/.*",
     "bower_components"
