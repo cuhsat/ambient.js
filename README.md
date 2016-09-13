@@ -3,7 +3,7 @@ Ambient.js
 Get your page some ambience!
 
 Ambient.js is a [jQuery](https://jquery.com/) plug-in that adds sound and
-style to your page. See the [Demo](demo/index.html)!
+style to your page. See the [Demo](https://cdn.rawgit.com/cuhsat/ambient.js/master/demo/index.html)!
 
 Actions
 -------
