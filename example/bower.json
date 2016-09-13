@@ -1,7 +1,0 @@
-{
-  "name": "storyboardjs-example",
-  "dependencies": {
-    "bootstrap": "~3.2",
-    "jquery": "~2.1"
-  }
-}
