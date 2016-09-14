@@ -1,4 +1,4 @@
-Ambient.js
+ambient.js
 ==========
 Ambient.js is a [jQuery](https://jquery.com/) plug-in that adds sound and
 style to your page.
