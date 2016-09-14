@@ -3,7 +3,9 @@ Ambient.js
 Get your page some ambience!
 
 Ambient.js is a [jQuery](https://jquery.com/) plug-in that adds sound and
-style to your page. See the [Demo](https://cdn.rawgit.com/cuhsat/ambient.js/master/demo/index.html)!
+style to your page.
+
+[Demo](https://cdn.rawgit.com/cuhsat/ambient.js/master/demo/index.html)
 
 Actions
 -------
@@ -25,15 +27,22 @@ Options
 Dictonary for all sound playbacks. Index by the `ambient` elements id.
 *(Default `{}`)*
 
+#### file
+Playback source.
+
+#### play
+Playback mode `once` or `loop`.
+
 ### scroll
 The navigation scroll speed. Use `false` to turn off scrolling.
-*(Default `1200` ms)*
+*(Default `1000` ms)*
 
 ### loop
 Should the navigation loop or not?
 *(Default `false`)*
 
 ### keys
+Keyboard navigation options.
 
 #### prev
 Navigate to the previous `ambient` element.
@@ -60,18 +69,6 @@ Will be called on action `prev` with the current `ambient` element. Return
 ### onNext(element)
 Will be called on action `next` with the current `ambient` element. Return 
 `false` to cancel the action.
-
-Includes
---------
-CSS:
-```
-<link rel="stylesheet" href="https://raw.githubusercontent.com/cuhsat/ambient.js/master/ambient.css"/>
-```
-
-Javascript:
-```
-<script type="text/javascript" src="https://raw.githubusercontent.com/cuhsat/ambient.js/master/ambient.js"></script>
-```
 
 License
 -------

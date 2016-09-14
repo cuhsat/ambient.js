@@ -75,15 +75,21 @@
 
     function playSound(element) {
       var ambient = element || getPlaying();
-      var source = $.fn.ambient.options.playlist[ambient.prop("id")];
+      var entry = $.fn.ambient.options.playlist[ambient.prop("id")];
 
-      if (source) {
+      if (entry) {
         root.find("audio").remove();
 
-        $("<audio/>", {
-          src: source,
-          autoplay: "autoplay"
-        }).appendTo(ambient);
+        var audio = {
+          autoplay: "autoplay",
+          src: entry.file
+        };
+
+        if (entry.play == "loop") {
+          audio["loop"] = "loop";
+        }
+
+        $("<audio/>", audio).appendTo(ambient);
       }
     }
 
@@ -180,7 +186,7 @@
     onNext: function() {},
     onPlay: function() {},
     onStop: function() {},
-    scroll: 1200,
+    scroll: 1000,
     loop: false,
     keys: {
       prev: [8, 38],

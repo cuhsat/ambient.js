@@ -31,12 +31,12 @@
   opacity: 1;
   filter: blur(0);
   -webkit-filter: blur(0);
-  transition-duration: 1.2s;
+  transition-duration: 1s;
 }
 
 .ambient.played {
   opacity: .3;
   filter: blur(0);
   -webkit-filter: blur(0);
-  transition-duration: 1.2s;
+  transition-duration: 1s;
 }

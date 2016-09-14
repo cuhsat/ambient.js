@@ -14,7 +14,7 @@
     <header class="animated fadeIn">
       <h1>The Raven</h1>
       <h2>by Edgar Allan Poe</h2>
-      <span class="fa-stack fa-2x animated infinite pulse">
+      <span class="fa-stack fa-2x animated infinite pulse ambient-play">
         <span class="fa fa-square-o fa-stack-2x"></span>
         <span class="fa fa-long-arrow-down fa-stack-1x"></span>
       </span>
@@ -169,15 +169,17 @@
       </article>
     </section>
     <footer>
-      Raven image from <a href="http://www.pngall.com">PNG ALL</a>
-      <br>
-      Rain sound from <a href="https://soundcloud.com/evilseedlet/rain">SoundCloud</a>
-      <br>
-      Thunderclap from <a href="https://soundcloud.com/tatakaudio/thunder-crack-loud">SoundCloud</a>
-      <br>
-      <br>
+      <a href="http://www.pngall.com">
+        Raven image from PNG ALL
+      </a><br>
+      <a href="https://soundcloud.com/evilseedlet/rain">
+        Rain sound from SoundCloud
+      </a><br>
+      <a href="https://soundcloud.com/tatakaudio/thunder-crack-loud">
+        Thunderclap from SoundCloud
+      </a><br><br>
       <a href="https://www.github.com/cuhsat/ambient.js/">
-        <span class="fa fa-github"></span>&nbsp;&nbsp;Ambient.js
+        <span class="fa fa-github"></span> Ambient.js
       </a>
     </footer>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -186,9 +188,23 @@
       $(function() {
         $("body").ambient({
           playlist: {
-            demo1: "media/demo1.ogg",
-            demo2: "media/demo2.ogg"
+            demo1: {
+              file: "media/demo1.mp3",
+              play: "loop"
+            },
+            demo2: {
+              file: "media/demo2.mp3",
+              play: "once"
+            }
           }
+        });
+
+        $(".ambient-play").click(function(e) {
+          $("body").ambient("play");
+        });
+
+        $(".ambient").click(function(e) {
+          $("body").ambient("next");
         });
       });
     </script>
