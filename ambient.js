@@ -23,7 +23,7 @@
  */
 (function($) {
   /**
-   * Ambient.js jQuery plug-in.
+   * ambient.js jquery plug-in.
    */
   $.fn.ambient = function(action) {
     var root = this;
@@ -178,7 +178,7 @@
   };
 
   /**
-   * Ambient.js default options.
+   * ambient.js default options.
    */
   $.fn.ambient.options = $.fn.ambient.defaults = {
     playlist: {},
