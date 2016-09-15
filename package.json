@@ -1,0 +1,25 @@
+{
+  "name": "ambient.js",
+  "version": "0.2.1",
+  "author": "Christian Uhsat",
+  "description": "Add some ambience!",
+  "homepage": "https://github.com/cuhsat/ambient.js#readme",
+  "license": "MIT",
+  "keywords": [
+    "ambient",
+    "ambient.js",
+    "style",
+    "sound"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cuhsat/ambient.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cuhsat/ambient.js/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "ambient.js"
+}
