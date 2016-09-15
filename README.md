@@ -2,7 +2,7 @@ ambient.js
 ==========
 A [jQuery](https://jquery.com/) plug-in that adds sound and style to your page.
 
-See it [live](https://rawgit.com/cuhsat/ambient.js/master/live/index.html)!
+[See it live!](https://rawgit.com/cuhsat/ambient.js/master/live/index.html)
 
 Actions
 -------
