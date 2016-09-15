@@ -1,15 +1,17 @@
 {
   "name": "ambient.js",
   "version": "0.2.1",
-  "author": "Christian Uhsat",
+  "license": "MIT",
+  "author": "Christian Uhsat <christian@uhsat.de>",
   "description": "Add some ambience!",
   "homepage": "https://github.com/cuhsat/ambient.js#readme",
-  "license": "MIT",
   "keywords": [
-    "ambient",
+    "ecosystem:jquery",
+    "jquery-plugin",
     "ambient.js",
-    "style",
-    "sound"
+    "ambient",
+    "sound",
+    "style"
   ],
   "repository": {
     "type": "git",
