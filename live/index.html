@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
   <head>
     <meta charset="utf-8"/>
     <meta name="language" content="english"/>
@@ -198,7 +199,21 @@
         });
 
         $(".ambient-play").click(function(e) {
-          $("body").ambient("play");
+          var page = document.documentElement;
+
+          if (page.requestFullscreen) {
+            page.requestFullscreen();
+          } else if (page.msRequestFullscreen) {
+            page.msRequestFullscreen();
+          } else if (page.mozRequestFullScreen) {
+            page.mozRequestFullScreen();
+          } else if (page.webkitRequestFullscreen) {
+            page.webkitRequestFullscreen();
+          }
+
+          setTimeout(function() {
+            $("body").ambient("play");
+          }, 500);
         });
       });
     </script>

@@ -58,6 +58,10 @@ Navigate to the previous `ambient` element.
 Navigate to the next `ambient` element.
 (Default `PAGE DOWN` / `ARROW DOWN` / `ENTER` / `SPACE`)
 
+### auto
+Auto navigation to the next `ambient` element after the given milliseconds.
+(Default `false`)
+
 ### loop
 Loop around the navigation.
 (Default `false`)

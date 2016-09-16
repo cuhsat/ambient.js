@@ -71,21 +71,21 @@
     function getPrev(element) {
       var ambient = element.prev(".ambient");
 
-      if (!ambient.length) {
-        ambient = !$.fn.ambient.options.loop ? element : getLast();
+      if (!$.fn.ambient.options.loop && !ambient.length) {
+        ambient = element;
       }
 
-      return ambient;
+      return ambient.length ? ambient : getLast();
     }
 
     function getNext(element) {
       var ambient = element.next(".ambient");
 
-      if (!ambient.length) {
-        ambient = !$.fn.ambient.options.loop ? element : getFirst();
+      if (!$.fn.ambient.options.loop && !ambient.length) {
+        ambient = element;
       }
 
-      return ambient;
+      return ambient.length ? ambient : getFirst();
     }
 
     function prevAmbient(element) {
@@ -186,24 +186,18 @@
 
         if ($.inArray(keycode, $.fn.ambient.options.keys.prev) != -1) {
           e.preventDefault();
-
-          if (!getPlaying().length) {
-            playAmbient();
-          } else {
-            prevAmbient();
-          }
+          prevAmbient();
         }
 
         if ($.inArray(keycode, $.fn.ambient.options.keys.next) != -1) {
           e.preventDefault();
-
-          if (!getPlaying().length) {
-            playAmbient();
-          } else {
-            nextAmbient();
-          }
+          nextAmbient();
         }
       });      
+    }
+
+    if ($.fn.ambient.options.auto !== false) {
+      setInterval(nextAmbient, $.fn.ambient.options.auto);
     }
 
     if (!action) {
@@ -228,6 +222,7 @@
       prev: [8, 33, 38],
       next: [13, 32, 34, 40]
     },
+    auto: false,
     loop: false
   };
 }(jQuery));
