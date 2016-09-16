@@ -25,19 +25,34 @@
   /**
    * ambient.js jquery plug-in.
    */
-  $.fn.ambient = function(action) {
+  $.fn.ambient = function(action, element) {
     var root = this;
 
     if (typeof(action) === "object" || action instanceof Object) {
       $.fn.ambient.options = $.extend({}, $.fn.ambient.defaults, action);
+
+      root.find("audio").remove();
+
+      $.each($.fn.ambient.options.playlist, function(index, value) {
+        var audio = {
+          preload: "auto",
+          src: value.file
+        };
+
+        if (value.play == "loop") {
+          audio["loop"] = "loop";
+        }
+
+        $("<audio/>", audio).appendTo($("#" + index));
+      });
     }
 
     if (typeof(action) === "string" || action instanceof String) {
       switch (action) {
-        case "prev": prev(); break
-        case "next": next(); break
-        case "play": play(); break
-        case "stop": stop(); break
+        case "prev": prevAmbient(element); break
+        case "next": nextAmbient(element); break
+        case "play": playAmbient(element); break
+        case "stop": stopAmbient(element); break
       }
     }
 
@@ -73,49 +88,29 @@
       return ambient;
     }
 
-    function playSound(element) {
-      var ambient = element || getPlaying();
-      var entry = $.fn.ambient.options.playlist[ambient.prop("id")];
-
-      if (entry) {
-        root.find("audio").remove();
-
-        var audio = {
-          autoplay: "autoplay",
-          src: entry.file
-        };
-
-        if (entry.play == "loop") {
-          audio["loop"] = "loop";
-        }
-
-        $("<audio/>", audio).appendTo(ambient);
-      }
-    }
-
-    function prev(element) {
+    function prevAmbient(element) {
       var ambient = element || getPlaying();
 
       if ($.fn.ambient.options.onPrev.call(root, ambient) === false) {
         return; // Canceled
       }
 
-      stop(ambient);
-      play(getPrev(ambient));
+      stopAmbient(ambient);
+      playAmbient(getPrev(ambient));
     }
 
-    function next(element) {
+    function nextAmbient(element) {
       var ambient = element || getPlaying();
 
       if ($.fn.ambient.options.onNext.call(root, ambient) === false) {
         return; // Canceled
       }
 
-      stop(ambient);
-      play(getNext(ambient));
+      stopAmbient(ambient);
+      playAmbient(getNext(ambient));
     }
 
-    function play(element) {
+    function playAmbient(element) {
       var ambient = element || getFirst();
 
       if (ambient.hasClass("playing")) {
@@ -136,10 +131,10 @@
 
       ambient.removeClass("played");
       ambient.addClass("playing");
-      playSound(ambient);
+      playAudio(ambient);
     }
 
-    function stop(element) {
+    function stopAmbient(element) {
       var ambient = element || getPlaying();
 
       if (ambient.hasClass("played")) {
@@ -154,24 +149,65 @@
       ambient.addClass("played");
     }
 
-    $(window).unbind("keyup").keyup(function(e) {
-      var keycode = e.keyCode || e.which;
+    function playAudio(element) {
+      var ambient = element || getPlaying();
+      
+      if ($.fn.ambient.options.playlist[ambient.prop("id")]) {
+        root.find("audio").each(function() {
+          this.pause();
+        });
 
-      if ($.inArray(keycode, $.fn.ambient.options.keys.prev) != -1) {
-        (getPlaying().length ? prev : play)();
-        e.preventDefault();
-        return false;
+        ambient.find("audio").each(function() {
+          this.play();
+        });
       }
+    }
 
-      if ($.inArray(keycode, $.fn.ambient.options.keys.next) != -1) {
-        (getPlaying().length ? next : play)();
-        e.preventDefault();
-        return false;
-      }
-    });
+    if ($.fn.ambient.options.mouse !== false) {
+      root.find(".ambient").unbind("click").click(function(e) {
+        if ($.fn.ambient.options.mouse == "prev") {
+          prevAmbient();
+        }
+
+        if ($.fn.ambient.options.mouse == "next") {
+          nextAmbient();
+        }
+
+        if ($.fn.ambient.options.mouse == "play") {
+          stopAmbient();
+          playAmbient($(this));
+        }
+      });
+    }
+
+    if ($.fn.ambient.options.keys !== false) {
+      $(document).unbind("keyup").keyup(function(e) {
+        var keycode = e.keyCode || e.which || e.charCode;
+
+        if ($.inArray(keycode, $.fn.ambient.options.keys.prev) != -1) {
+          e.preventDefault();
+
+          if (!getPlaying().length) {
+            playAmbient();
+          } else {
+            prevAmbient();
+          }
+        }
+
+        if ($.inArray(keycode, $.fn.ambient.options.keys.next) != -1) {
+          e.preventDefault();
+
+          if (!getPlaying().length) {
+            playAmbient();
+          } else {
+            nextAmbient();
+          }
+        }
+      });      
+    }
 
     if (!action) {
-      play();
+      playAmbient();
     }
 
     return this;
@@ -187,10 +223,11 @@
     onPlay: function() {},
     onStop: function() {},
     scroll: 1000,
-    loop: false,
+    mouse: "play",
     keys: {
-      prev: [8, 38],
-      next: [32, 40]
-    }
+      prev: [8, 33, 38],
+      next: [13, 32, 34, 40]
+    },
+    loop: false
   };
 }(jQuery));

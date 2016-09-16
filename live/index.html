@@ -14,10 +14,7 @@
     <header class="animated fadeIn">
       <h1>The Raven</h1>
       <h2>by Edgar Allan Poe</h2>
-      <span class="fa-stack fa-2x animated infinite pulse ambient-play">
-        <span class="fa fa-square-o fa-stack-2x"></span>
-        <span class="fa fa-long-arrow-down fa-stack-1x"></span>
-      </span>
+      <span class="animated infinite pulse fa fa-3x fa-play ambient-play"></span>
     </header>
     <section>
       <article class="ambient" id="demo1">
@@ -196,15 +193,12 @@
               file: "media/demo2.mp3",
               play: "once"
             }
-          }
+          },
+          mouse: "next"
         });
 
         $(".ambient-play").click(function(e) {
           $("body").ambient("play");
-        });
-
-        $(".ambient").click(function(e) {
-          $("body").ambient("next");
         });
       });
     </script>

@@ -34,20 +34,33 @@ Playback mode `once` or `loop`.
 The navigation scroll speed. Use `false` to turn off scrolling.
 (Default `1000` ms)
 
-### loop
-Should the navigation loop or not?
-(Default `false`)
+### mouse
+Mouse navigation options. Use `false` to turn off mouse navigation.
+(Default `play`)
 
-### keys
-Keyboard navigation options.
+#### play
+Navigate to the clicked `ambient` element.
 
 #### prev
 Navigate to the previous `ambient` element.
-(Default `ARROW UP` / `BACKSPACE`)
 
 #### next
 Navigate to the next `ambient` element.
-(Default `ARROW DOWN` / `SPACE`)
+
+### keys
+Keyboard navigation options. Use `false` to turn off keyboard navigation.
+
+#### prev
+Navigate to the previous `ambient` element.
+(Default `PAGE UP` / `ARROW UP` / `BACKSPACE`)
+
+#### next
+Navigate to the next `ambient` element.
+(Default `PAGE DOWN` / `ARROW DOWN` / `ENTER` / `SPACE`)
+
+### loop
+Loop around the navigation.
+(Default `false`)
 
 Callbacks
 ---------
