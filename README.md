@@ -1,4 +1,4 @@
-ambient.js [![npm](https://img.shields.io/badge/npm-package-brightgreen.png)](https://npmjs.com/package/ambient.js)
+ambient.js
 ==========
 A [jQuery](https://jquery.com/) plug-in that adds sound and style to your page.
 
